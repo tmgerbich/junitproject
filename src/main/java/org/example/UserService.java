@@ -7,6 +7,20 @@ public class UserService {
     // A simple map to simulate a database
     private Map<String, User> userDatabase = new HashMap<>();
 
+    //added overloaded constructors for UserService
+    public UserService() {
+        this.userDatabase.put("admin", new User("admin", "admin", "admin"));
+    }
+
+    public UserService(Map<String, User> userDatabase) {
+        this.userDatabase = userDatabase;
+    }
+
+    //added getter
+    public Map<String, User> getUserDatabase() {
+        return userDatabase;
+    }
+
     public boolean registerUser(User user) {
         if (userDatabase.containsKey(user.getUsername())) {
             return false; // User already exists
